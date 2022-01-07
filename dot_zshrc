@@ -19,7 +19,19 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+# history
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups # remove older duplicate entries from history
+setopt hist_reduce_blanks # remove superfluous blanks from history items
+setopt inc_append_history # save history entries as soon as they are entered
+setopt share_history # share history between different instances of the shell
 
+# command autocomplete
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
@@ -30,6 +42,30 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
+
+####################### ZPLUGINS ###########################
+
+# prompt
+zinit light denysdovhan/spaceship-zsh-theme
+
+# oh-my-zsh plugins and libs
+zinit snippet OMZ::lib/history.zsh
+zinit snippet OMZ::lib/completion.zsh
+CASE_SENSITIVE="false"
+zinit snippet OMZ::lib/directories.zsh
+zinit snippet OMZ::lib/git.zsh
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/cp/cp.plugin.zsh
+zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet OMZ::plugins/docker/_docker
+
+# plugins
+zinit light zdharma/fast-syntax-highlighting
+zinit load zdharma/history-search-multi-word
+zinit light supercrabtree/k
+zinit light djui/alias-tips
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
 
 
 ####################### ALIAS ###########################
