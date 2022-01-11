@@ -33,21 +33,27 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
+
+####################### ZPLUGINS ###########################
+
+# Load powerline10k theme
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
     zdharma-continuum/zinit-annex-as-monitor \
     zdharma-continuum/zinit-annex-bin-gem-node \
     zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+    zdharma-continuum/zinit-annex-rust \
+    zdharma-continuum/fast-syntax-highlighting \
+    zdharma-continuum/history-search-multi-word \
+    supercrabtree/k \
+    djui/alias-tips \
+    zsh-users/zsh-autosuggestions \
+    zsh-users/zsh-completions
 
 ### End of Zinit's installer chunk
-
-####################### ZPLUGINS ###########################
-
-# prompt
-zinit light denysdovhan/spaceship-zsh-theme
-
 # oh-my-zsh plugins and libs
 zinit snippet OMZ::lib/history.zsh
 zinit snippet OMZ::lib/completion.zsh
@@ -58,15 +64,6 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/cp/cp.plugin.zsh
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZ::plugins/docker/_docker
-
-# plugins
-zinit light zdharma/fast-syntax-highlighting
-zinit load zdharma/history-search-multi-word
-zinit light supercrabtree/k
-zinit light djui/alias-tips
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-
 
 ####################### ALIAS ###########################
 
@@ -107,4 +104,3 @@ alias mig="migrate"
 alias cp="cpv"
 
 eval "$(fasd --init auto)"
-eval "$(starship init zsh)"
