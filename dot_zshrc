@@ -107,4 +107,3 @@ alias mig="migrate"
 alias cp="cpv"
 
 eval "$(fasd --init auto)"
-eval "$(starship init zsh)"
