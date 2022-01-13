@@ -1,4 +1,12 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export PATH=~/bin:$PATH
+export EDITOR=$(which nvim)
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -33,10 +41,9 @@ setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
 setopt always_to_end # move cursor to end if word had one match
 
-
 ####################### ZPLUGINS ###########################
 
-# Load powerline10k theme
+# prompt
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Load a few important annexes, without Turbo
@@ -48,10 +55,10 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust \
     zdharma-continuum/fast-syntax-highlighting \
     zdharma-continuum/history-search-multi-word \
-    supercrabtree/k \
-    djui/alias-tips \
-    zsh-users/zsh-autosuggestions \
-    zsh-users/zsh-completions
+		supercrabtree/k \
+		djui/alias-tips \
+		zsh-users/zsh-autosuggestions \
+		zsh-users/zsh-completions
 
 ### End of Zinit's installer chunk
 # oh-my-zsh plugins and libs
@@ -64,6 +71,7 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/cp/cp.plugin.zsh
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 zinit snippet OMZ::plugins/docker/_docker
+
 
 ####################### ALIAS ###########################
 
@@ -104,3 +112,6 @@ alias mig="migrate"
 alias cp="cpv"
 
 eval "$(fasd --init auto)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
